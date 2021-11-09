@@ -23,7 +23,8 @@
 
   <div class="field">
     <%= form.label :category %>
-    <%= form.text_field :category %>
+    <%= form.select :category, [['Traveling', 'Traveling'], ['Clothing', 'Clothing'], ['Taxi', 'Taxi'], ['Cafes', 'Cafes'], ['Shops', 'Shops'], ['Other', 'Other']] %>
+
   </div>
 
   <div class="actions">
