@@ -3,8 +3,11 @@ class ExpensesController < ApplicationController
 
   # GET /expenses or /expenses.json
   def index
-    @expenses = Expense.all
-    @calculated_expense_sum = Expense.sum(:amount)
+    # @expenses = Expense.all
+    if current_user
+      @expenses = Expense.where(user_id: current_user.id)
+      @calculated_expense_sum = Expense.where(user_id: current_user.id).sum(:amount)
+    end
   end
 
   # GET /expenses/1 or /expenses/1.json
@@ -23,6 +26,7 @@ class ExpensesController < ApplicationController
   # POST /expenses or /expenses.json
   def create
     @expense = Expense.new(expense_params)
+    @expense.user = current_user
 
     respond_to do |format|
       if @expense.save
@@ -65,6 +69,6 @@ class ExpensesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def expense_params
-      params.require(:expense).permit(:description, :amount, :category)
+      params.require(:expense).permit(:description, :amount, :category).merge(user: current_user)
     end
 end
