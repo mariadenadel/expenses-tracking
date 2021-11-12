@@ -1,24 +1,19 @@
-# README
+# Expenses Tracking
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Expenses Tracking is a web site for tracking your expense
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+```bash
+git clone https://github.com/mariadenadel/expenses-tracking.git
+cd expenses-tracking
+bin/rails db:migrate
+bundler install
+npm install
+bin/rails server
+```
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Did not do
+1. Add automated tests.
+2. User should be able to filter the list.
+3. User should be able to share the non-editable list of his spendings with another user.
